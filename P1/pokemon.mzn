@@ -30,27 +30,21 @@ array[ATTACK] of TYPE: attacktype;
 array[TYPE] of set of TYPE: typeffective;
 
 % start
-%var set of POKEMON: team;
-%array[NPOKEMON, NATTACK] of var 1..nAttack: attks = [i | i in ];
 
-%constraint card(team) = maxPokeTeam;
-%constraint card(attks) = card(team) * maxAttackPoke;
-
-%constraint exists(i in 1..nAttack)(attks[i]=)
-
-%array[1..maxPokeTeam*maxAttackPoke] of var 1..nPokemon: types; %pokemon
-var set of TYPE: types; %pokemon
+var set of TYPE: types; %type satisfaction
 constraint card(types)<=maxPokeTeam*maxAttackPoke;
 
 constraint forall(i in TYPE) (exists(k in types)( 
     i in typeffective[k]));
 
-%constraint Rock in types;
+var set of ATTACK: attks;
+constraint forall(i in types)(exists(j in attks)(attacktype[j] = i));
+constraint card(attks) = card(types);
 
-%output [show(TYPE[i])++show(typeffective[i][j]) | i in TYPE, j in 1..card(typeffective[i])];
-%output [show(TYPE[i]) | i in types];
-output [show(types)];%| i in types];
-%output [show(typeffective[i][j]) | i in TYPE, j in 1..card(typeffective[i])];
-%output [show(typeffective[i][j]) | i in types, j in 1..card(typeffective[i])];
+var set of POKEMON: pkm;
+constraint card(pkm) <= maxAttackPoke;
+constraint forall(i in attks)(exists(p in pkm)(i in pokattacks[p]));
+
+output [show(types)++","++show(attks)++","++show(pkm)];
 
 solve satisfy;

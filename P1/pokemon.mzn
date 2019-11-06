@@ -32,19 +32,21 @@ array[TYPE] of set of TYPE: typeffective;
 % start
 
 var set of TYPE: types; %type satisfaction
+array[POKEMON] of var set of ATTACK: attks; % attacks per pokemon
+var set of POKEMON: pkm; % pokemon used
+
+constraint card(pkm) <= maxPokeTeam;
+constraint forall(p in POKEMON diff pkm)(card(attks[p])=0);
 constraint card(types)<=maxPokeTeam*maxAttackPoke;
+constraint forall(i in TYPE) (exists(k in types)(i in typeffective[k])); % all weaknesses coovered
+constraint forall(p in pkm)(card(attks[p])<=maxAttackPoke);
+constraint forall(i in types)(exists(j in attks, k in j)(attacktype[k] = i));
+constraint forall(j in attks, k in j)(attacktype[k] in types);
+constraint forall(p in pkm, i in attks[p])(i in pokattacks[p]);
 
-constraint forall(i in TYPE) (exists(k in types)( 
-    i in typeffective[k]));
-
-var set of ATTACK: attks;
-constraint forall(i in types)(exists(j in attks)(attacktype[j] = i));
-constraint card(attks) = card(types);
-
-var set of POKEMON: pkm;
-constraint card(pkm) <= maxAttackPoke;
-constraint forall(i in attks)(exists(p in pkm)(i in pokattacks[p]));
-
-output [show(types)++","++show(attks)++","++show(pkm)];
+%output [show("Pokemon: \(pkm)")++"\n"++show("Attacks: ")++{if card(i)>0 then "\(i)" else "" endif where i in attks}];
+output ["\(types)\n"];
+output ["Pokemon: \(pkm)\nAttacks: "];
+output [if card(i) > 0 then "\(i)," else "" endif | i in fix(attks)];
 
 solve satisfy;

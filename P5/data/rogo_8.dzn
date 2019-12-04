@@ -1,0 +1,18 @@
+rows = 9;
+cols = 7;
+max_steps = 16;
+problem = array2d(1..rows, 1..cols, 
+[
+ %1 2 3 4 5 6 7
+  B,W,6,W,W,3,B, % 1
+  2,W,3,W,W,6,W, % 2
+  6,W,W,2,W,W,2, % 3
+  W,3,W,W,B,B,B, % 4
+  W,W,W,2,W,2,B, % 5
+  W,W,W,3,W,W,W, % 6
+  6,W,6,B,W,W,3, % 7
+  3,W,W,W,W,W,6, % 8
+  B,2,W,6,W,2,B, % 9
+]);
+
+%sum_points = 31;

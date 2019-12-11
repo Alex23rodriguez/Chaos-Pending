@@ -1,0 +1,16 @@
+ORG = {A,B,C,D,E,F,G,H,I,J,K};
+T = 30;
+passengers = 4;
+compatibility = [|true, false, false, true, true, true, true, false, true, false, false
+                 |false, true, false, true, true, true, false, true, true, true, true
+                 |false, false, true, false, true, false, true, true, true, true, false
+                 |true, true, false, true, false, true, true, true, false, true, true
+                 |true, true, true, false, true, false, true, true, true, false, false
+                 |true, true, false, true, false, true, false, true, true, true, true
+                 |true, false, true, true, true, false, true, false, true, true, false
+                 |false, true, true, true, true, true, false, true, false, true, true
+                 |true, true, true, false, true, true, true, false, true, false, false
+                 |false, true, true, true, false, true, true, true, false, true, true
+                 |false, true, false, true, false, true, false, true, false, true, true|];
+                 
+%UNSATISFIABLE

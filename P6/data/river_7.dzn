@@ -1,0 +1,17 @@
+ORG = {A,B,C,D,E,F,G,H,I,J,K,L};
+T = 30;
+passengers = 4;
+compatibility = [|true, false, false, true, true, true, true, true, true, true, true, true
+                 |false, true, true, true, true, true, true, true, true, true, true, true
+                 |false, true, true, true, true, true, true, true, true, true, true, true
+                 |true, true, true, true, true, false, true, true, true, true, true, true
+                 |true, true, true, true, true, false, true, true, true, true, true, true
+                 |true, true, true, false, false, true, true, true, true, true, true, true
+                 |true, true, true, true, true, true, true, false, true, true, true, true
+                 |true, true, true, true, true, true, false, true, false, true, true, true
+                 |true, true, true, true, true, true, true, false, true, true, true, true
+                 |true, true, true, true, true, true, true, true, true, true, false, true
+                 |true, true, true, true, true, true, true, true, true, false, true, false
+                 |true, true, true, true, true, true, true, true, true, true, false, true|];
+                 
+%steps=7

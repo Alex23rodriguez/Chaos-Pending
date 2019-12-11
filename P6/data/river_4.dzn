@@ -1,0 +1,10 @@
+ORG = {A,B,C,D,E};
+T = 20;
+passengers = 2;
+compatibility = [|true, false, true, true, true
+                 |false, true, false, false, false
+                 |true, false, true, true, false 
+                 |true, false, true, true, false
+                 |true, false, false, false, true|];
+                 
+%steps=7

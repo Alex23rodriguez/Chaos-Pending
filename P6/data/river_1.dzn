@@ -1,0 +1,10 @@
+ORG = {Wolf, Goat, Cabbage, Dog, Cat};
+T = 20;
+passengers = 2;
+compatibility = [|true, false, true, false, true
+                 |false, true, false, true, true
+                 |true, false, true, true, true
+                 |false, true, true, true, false
+                 |true, true, true, false, true|];
+                 
+%steps=7
